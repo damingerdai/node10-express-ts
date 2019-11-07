@@ -1,9 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { isArray, isObject } from 'util';
 
 import { FunctionContext, FunctionEvent } from './typings';
 
 import handler from './function/handler';
+
 
 const app = express()
 
@@ -59,11 +61,3 @@ const port = process.env.http_port || 3000;
 app.listen(port, () => {
     console.log(`OpenFaaS Node.js listening on port: ${port}`)
 });
-
-let isArray = (a) => {
-    return (!!a) && (a.constructor === Array);
-};
-
-let isObject = (a) => {
-    return (!!a) && (a.constructor === Object);
-};
