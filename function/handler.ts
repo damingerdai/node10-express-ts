@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = (event, context) => {
+export = (event, context) => {
     let err;
     const result =             {
         status: "You said: " + JSON.stringify(event.body)

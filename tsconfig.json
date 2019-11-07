@@ -3,7 +3,8 @@
 			"outDir": "./",
 			"allowJs": true,
 			"target": "es5",
-			"module": "commonjs"
+			"module": "commonjs",
+			"esModuleInterop":true
 	},
 	"include": [
 			"index.ts"
