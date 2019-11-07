@@ -1,11 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { isArray, isObject } from 'util';
 
-import { FunctionContext, FunctionEvent } from './typings';
-
-import handler from './function/handler';
-
+import middleware from'./middleware';
 
 const app = express()
 
@@ -29,26 +25,6 @@ app.use(function (req, res, next) {
     }
 });
 
-
-var middleware = (req, res) => {
-    let cb = (err, functionResult: any) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send(err);
-        }
-
-        if (isArray(functionResult) || isObject(functionResult)) {
-            res.set(fnContext.headers()).status(fnContext.status()).send(JSON.stringify(functionResult));
-        } else {
-            res.set(fnContext.headers()).status(fnContext.status()).send(functionResult);
-        }
-    };
-
-    let fnEvent = new FunctionEvent(req);
-    let fnContext = new FunctionContext(cb) as any;
-
-    handler(fnEvent, fnContext);
-};
 
 app.post('/*', middleware);
 app.get('/*', middleware);
