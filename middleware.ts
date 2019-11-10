@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { isArray, isObject } from 'util';
-import { FunctionEvent, FunctionContext } from './function/typings';
+import { FunctionEvent, FunctionContext } from './typings';
 
 import handler = require('./function/handler');
 
