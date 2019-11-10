@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { isArray, isObject } from 'util';
-import { FunctionEvent, FunctionContext } from './typings';
+import { FunctionEvent, FunctionContext } from './function/typings';
 
 import handler = require('./function/handler');
 
 export = (req: Request, res: Response) => {
-    let cb = (err, functionResult: any) => {
+    const cb = (err, functionResult: any) => {
         if (err) {
             console.error(err);
             return res.status(500).send(err);
@@ -18,8 +18,8 @@ export = (req: Request, res: Response) => {
         }
     };
 
-    let fnEvent = new FunctionEvent(req);
-    let fnContext = new FunctionContext(cb) as any;
+    const fnEvent = new FunctionEvent(req);
+    const fnContext = new FunctionContext(cb) as any;
 
     handler(fnEvent, fnContext);
 };

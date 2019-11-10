@@ -26,7 +26,7 @@ WORKDIR /home/app
 COPY package.json ./
 COPY tsconfig.json ./
 COPY yarn.lock ./
-COPY index.ts ./
+COPY *.ts ./
 COPY function/ ./function
 
 FROM base as build
