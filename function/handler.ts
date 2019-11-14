@@ -1,6 +1,7 @@
-"use strict"
+import { FunctionEvent } from './event';
+import { FunctionContext } from './context';
 
-export = (event, context) => {
+export = (event: FunctionEvent, context: FunctionContext) => {
     let err;
     const result =             {
         status: "You said: " + JSON.stringify(event.body)
