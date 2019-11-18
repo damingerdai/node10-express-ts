@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { isArray, isObject } from 'util';
 import { FunctionEvent, FunctionContext } from './typings';
 
-import handler = require('./function/handler');
+import handler = require('./function/handler.js');
 
 export = (req: Request, res: Response) => {
     const cb = (err, functionResult: any) => {
@@ -21,5 +21,5 @@ export = (req: Request, res: Response) => {
     const fnEvent = new FunctionEvent(req);
     const fnContext = new FunctionContext(cb) as any;
 
-    handler(fnEvent, fnContext);
+    handler(fnEvent as any, fnContext as any);
 };

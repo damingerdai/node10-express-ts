@@ -31,13 +31,14 @@ COPY function/ ./function
 
 FROM base as build
 
+WORKDIR /home/app/function
+
+RUN yarn && yarn build
+
 WORKDIR /home/app
 
 RUN yarn && yarn build
 
-WORKDIR /home/app/function
-
-RUN yarn && yarn build
 
 # Set correct permissions to use non root user
 WORKDIR /home/app/
