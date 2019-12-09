@@ -1,2 +1,2 @@
 language: node10-express-ts
-fprocess: node index.js
+fprocess: node dist/index.js
